@@ -2,6 +2,7 @@ class WorkoutsController < ApplicationController
 	before_action :find_workout, only: [:show, :edit, :update, :destroy]
 
 	def index
+		@workouts = Workout.all.order("created_at DESC")
 	end
 
 	def show
@@ -29,7 +30,7 @@ class WorkoutsController < ApplicationController
 
 	def destroy
 	end
-	
+
 	private
 		def workouts_params
 			params.require(:workout).permit(:date, :workout, :mood, :length)
